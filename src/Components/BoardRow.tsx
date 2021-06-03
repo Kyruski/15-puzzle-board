@@ -5,9 +5,11 @@ import { BoardSquare } from './BoardSquare'
 
 interface Props {
   row: square[];
+  rowIndex: number;
+  handleSquareClick: Function;
 }
 
-export const BoardRow: React.FC<Props> = ({ row }) => {
+export const BoardRow: React.FC<Props> = ({ row, rowIndex, handleSquareClick }) => {
 
 
   return (
@@ -15,8 +17,8 @@ export const BoardRow: React.FC<Props> = ({ row }) => {
       <LeftControl>
         {'←'}
       </LeftControl>
-      {row.map((square, key) => (
-        <BoardSquare square={square} key={`square${key}`} />
+      {row.map((square, index) => (
+        <BoardSquare square={square} handleSquareClick={handleSquareClick} pos={[rowIndex, index]} key={`square${index}`} />
       ))}
       <RightControl>
         {'→'}

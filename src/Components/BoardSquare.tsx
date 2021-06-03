@@ -4,12 +4,14 @@ import { BoardSquareContainer, BoardSquareItem, SquareText } from './elements';
 
 interface Props {
   square: square;
+  pos: number[];
+  handleSquareClick: Function;
 }
 
-export const BoardSquare: React.FC<Props> = ({ square }) => {
+export const BoardSquare: React.FC<Props> = ({ square, pos, handleSquareClick }) => {
   const isFilled = !!square;
   return (
-    <BoardSquareContainer >
+    <BoardSquareContainer onClick={() => handleSquareClick(pos)}>
       <BoardSquareItem isFilled={isFilled} >
         <SquareText>
           {square || '\u00A0'}
