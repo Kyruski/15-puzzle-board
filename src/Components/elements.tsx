@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const BoardContainer = styled.div`
+
   margin: auto auto;
   height: 508px;
   width: 508px;
@@ -8,10 +9,11 @@ export const BoardContainer = styled.div`
 `
 
 export const BoardRowContainer = styled.div`
-  display: inline-block;
+display: inline-block;
 `
 
 export const BoardSquareContainer = styled.div<{ isFilled: boolean }>`
+
   border: 1px white solid;
   display: flex;
   align-items: center;

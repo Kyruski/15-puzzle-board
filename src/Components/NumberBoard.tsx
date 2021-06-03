@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { NumberBoard } from './NumberBoard';
+import { BoardContainer } from './elements';
+import { BoardRow } from './BoardRow';
 
 const initialBoard = () => {
   const nums = Array(16).fill(null);
@@ -23,10 +24,12 @@ const initialBoard = () => {
   return board;
 }
 
-export const Board = () => {
+export const NumberBoard = () => {
   const [board, setBoard] = useState(initialBoard());
 
   return (
-    <NumberBoard board={board} />
+    <BoardContainer>
+      {board.map((row, key) => (<BoardRow row={row} key={`row${key}`} />))}
+    </BoardContainer>
   )
 }

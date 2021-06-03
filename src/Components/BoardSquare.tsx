@@ -11,7 +11,7 @@ export const BoardSquare: React.FC<Props> = ({ square }) => {
   return (
     <BoardSquareContainer isFilled={isFilled} >
       <SquareText>
-        {square || ''}
+        {square || ''}&nbsp;
       </SquareText>
     </BoardSquareContainer>
   )
