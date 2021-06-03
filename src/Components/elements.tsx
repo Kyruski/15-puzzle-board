@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const BoardContainer = styled.div`
-
   margin: auto auto;
   height: 508px;
   width: 508px;
@@ -9,21 +8,24 @@ export const BoardContainer = styled.div`
 `
 
 export const BoardRowContainer = styled.div`
-display: inline-block;
 `
 
-export const BoardSquareContainer = styled.div<{ isFilled: boolean }>`
+export const BoardSquareContainer = styled.div`
 
-  border: 1px white solid;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 125px;
-  width: 125px;
-
-  background-color: ${({ isFilled }) => isFilled ? '#2d5178' : 'white'};
+  display: inline-block;
 `;
 
-export const SquareText = styled.p`
+export const BoardSquareItem = styled.div<{ isFilled: boolean }>`
+  background-color: ${({ isFilled }) => isFilled ? '#2d5178' : 'white'};
+    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px white solid;
+  height: 125px;
+  width: 125px;
+`;
+
+export const SquareText = styled.span`
   color: white;
 `;
