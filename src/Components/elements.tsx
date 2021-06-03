@@ -74,5 +74,6 @@ export const BoardSquareItem = styled.div<{ isFilled: boolean }>`
 `;
 
 export const SquareText = styled.span`
+  font-size: 24px;
   color: white;
 `;

@@ -3,8 +3,8 @@ import { ControlSquare } from './ControlSquare';
 import { ControlRowContainer } from './elements';
 
 interface Props {
-  row: Boolean[];
-  arrow: String;
+  row: boolean[];
+  arrow: string;
 }
 
 export const ControlRow: React.FC<Props> = ({ row, arrow }) => {

@@ -1,1 +1,1 @@
-export type square = Number | null;
+export type square = number | null;
