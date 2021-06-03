@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { NumberBoard } from './NumberBoard';
+import { BoardRow } from './BoardRow';
+import { ControlRow } from './ControlRow';
+import { BoardContainer, GameContainer, TopBottomContainer, BottomControl, TopControl } from './elements';
 
 const initialBoard = () => {
   const nums = Array(16).fill(null);
@@ -26,7 +28,23 @@ const initialBoard = () => {
 export const Board = () => {
   const [board, setBoard] = useState(initialBoard());
 
+  const controllRow = [true, true, true, true];
+
   return (
-    <NumberBoard board={board} />
+    <GameContainer>
+      <BoardContainer>
+        <TopBottomContainer>
+          <TopControl>
+            <ControlRow row={controllRow} arrow={'↑'} />
+          </TopControl>
+        </TopBottomContainer>
+        {board.map((row, key) => (<BoardRow row={row} key={`row${key}`} />))}
+        <TopBottomContainer>
+          <BottomControl>
+            <ControlRow row={controllRow} arrow={'↓'} />
+          </BottomControl>
+        </TopBottomContainer>
+      </BoardContainer>
+    </GameContainer>
   )
 }

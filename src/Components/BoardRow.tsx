@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { square } from '../types';
-import { BoardRowContainer } from './elements';
+import { BoardRowContainer, LeftControl, RightControl } from './elements';
 import { BoardSquare } from './BoardSquare'
 
 interface Props {
@@ -9,11 +9,18 @@ interface Props {
 
 export const BoardRow: React.FC<Props> = ({ row }) => {
 
-  console.log(row);
 
   return (
     <BoardRowContainer>
-      {row.map((square, key) => (<BoardSquare square={square} key={`square${key}`} />))}
+      <LeftControl>
+        {'←'}
+      </LeftControl>
+      {row.map((square, key) => (
+        <BoardSquare square={square} key={`square${key}`} />
+      ))}
+      <RightControl>
+        {'→'}
+      </RightControl>
     </BoardRowContainer>
   )
 }
