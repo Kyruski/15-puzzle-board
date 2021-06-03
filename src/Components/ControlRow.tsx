@@ -5,14 +5,16 @@ import { ControlRowContainer } from './elements';
 interface Props {
   row: boolean[];
   arrow: string;
+  moveMultiple: Function;
+  arrowClick: string;
 }
 
-export const ControlRow: React.FC<Props> = ({ row, arrow }) => {
+export const ControlRow: React.FC<Props> = ({ row, arrow, moveMultiple, arrowClick }) => {
 
   return (
     <ControlRowContainer>
 
-      {row.map((item, key) => (<ControlSquare arrow={arrow} key={key} />))}
+      {row.map((item, index) => <ControlSquare arrow={arrow} arrowClick={arrowClick} moveMultiple={moveMultiple} pos={[null, index]} key={index} />)}
     </ControlRowContainer>
   )
 }

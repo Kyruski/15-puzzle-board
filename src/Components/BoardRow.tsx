@@ -7,20 +7,21 @@ interface Props {
   row: square[];
   rowIndex: number;
   handleSquareClick: Function;
+  moveMultiple: Function;
 }
 
-export const BoardRow: React.FC<Props> = ({ row, rowIndex, handleSquareClick }) => {
+export const BoardRow: React.FC<Props> = ({ row, rowIndex, handleSquareClick, moveMultiple }) => {
 
 
   return (
     <BoardRowContainer>
-      <LeftControl>
+      <LeftControl onClick={() => moveMultiple([rowIndex, null], 'left')}>
         {'←'}
       </LeftControl>
       {row.map((square, index) => (
         <BoardSquare square={square} handleSquareClick={handleSquareClick} pos={[rowIndex, index]} key={`square${index}`} />
       ))}
-      <RightControl>
+      <RightControl onClick={() => moveMultiple([rowIndex, null], 'right')}>
         {'→'}
       </RightControl>
     </BoardRowContainer>

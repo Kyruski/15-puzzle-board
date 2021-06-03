@@ -37,38 +37,63 @@ export const Board = () => {
 
   const controllRow = [true, true, true, true];
 
-  const moveSquare = (matrix: square[][], pos: number[]): square[][] => {
-    const newMatrix = [...matrix];
-    [newMatrix[pos[0]][pos[1]], newMatrix[openSpace[0]][openSpace[1]]] = [newMatrix[openSpace[0]][openSpace[1]], newMatrix[pos[0]][pos[1]]];
-    return newMatrix;
-  }
-
   const handleSquareClick = (pos: number[]): void => {
+    const newMatrix = [...board]; //working matrix since board is immutable
     if ( //check if valid move
-      (Math.abs(pos[0] - openSpace[0]) === 1 && pos[1] === openSpace[1]) ||
-      (Math.abs(pos[1] - openSpace[1]) === 1 && pos[0] === openSpace[0])
+      (Math.abs(pos[0] - openSpace[0]) === 1 && pos[1] === openSpace[1]) || //if in same column and adjacent
+      (Math.abs(pos[1] - openSpace[1]) === 1 && pos[0] === openSpace[0]) //if in same row and adjacent
     ) {
-      setBoard(moveSquare(board, pos));
-      setOpenSpace(pos);
+      [newMatrix[pos[0]][pos[1]], newMatrix[openSpace[0]][openSpace[1]]] = [newMatrix[openSpace[0]][openSpace[1]], newMatrix[pos[0]][pos[1]]]; //swap spots
+      setBoard(newMatrix); //set new board
+      setOpenSpace(pos); //set new Open Space
     }
   }
 
-  // const handleMultiple = () => {
-
-  // }
+  const moveMultiple = (pos: square[], arrowClick: string): void => {
+    console.log(pos, openSpace, board);
+    const newMatrix = [...board]; //working matrix since board is immutable
+    let newPos = [0, 0];
+    if (pos[1] !== null) {
+      if (arrowClick === 'bottom' || arrowClick === 'right') {
+        for (let i = openSpace[0]; i > 0; i--) { //work from open space to end, excluding 0th index since it switches
+          [newMatrix[i][pos[1]], newMatrix[i - 1][pos[1]]] = [newMatrix[i - 1][pos[1]], newMatrix[i][pos[1]]] //swap spots
+        }
+        newPos = [0, pos[1]];
+      } else {
+        for (let i = openSpace[0]; i < 3; i++) {
+          [newMatrix[i][pos[1]], newMatrix[i + 1][pos[1]]] = [newMatrix[i + 1][pos[1]], newMatrix[i][pos[1]]] //swap spots
+        }
+        newPos = [3, pos[1]];
+      }
+    } else {
+      if (arrowClick === 'bottom' || arrowClick === 'right') {
+        for (let i = openSpace[1]; i > 0; i--) { //work from open space to end, excluding 0th index since it switches
+          [newMatrix[pos[0]][i], newMatrix[pos[0]][i - 1]] = [newMatrix[pos[0]][i - 1], newMatrix[pos[0]][i]] //swap spots
+        }
+        newPos = [pos[0], 0];
+      } else {
+        for (let i = openSpace[1]; i < 3; i++) {
+          [newMatrix[pos[0]][i], newMatrix[pos[0]][i + 1]] = [newMatrix[pos[0]][i + 1], newMatrix[pos[0]][i]] //swap spots
+        }
+        newPos = [pos[0], 3];
+      }
+    }
+    setBoard(newMatrix);
+    setOpenSpace(newPos);
+  }
 
   return (
     <GameContainer>
       <BoardContainer>
         <TopBottomContainer>
           <TopControl>
-            <ControlRow row={controllRow} arrow={'↑'} />
+            <ControlRow row={controllRow} moveMultiple={moveMultiple} arrowClick={'top'} arrow={'↑'} />
           </TopControl>
         </TopBottomContainer>
-        {board.map((row, index) => (<BoardRow row={row} handleSquareClick={handleSquareClick} rowIndex={index} key={`row${index}`} />))}
+        {board.map((row, index) => (<BoardRow row={row} handleSquareClick={handleSquareClick} moveMultiple={moveMultiple} rowIndex={index} key={`row${index}`} />))}
         <TopBottomContainer>
           <BottomControl>
-            <ControlRow row={controllRow} arrow={'↓'} />
+            <ControlRow row={controllRow} moveMultiple={moveMultiple} arrowClick={'bottom'} arrow={'↓'} />
           </BottomControl>
         </TopBottomContainer>
       </BoardContainer>
