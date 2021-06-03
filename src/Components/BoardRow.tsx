@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { square } from '../types';
 import { BoardRowContainer } from './elements';
+import { BoardSquare } from './BoardSquare'
 
 interface Props {
   row: square[];
@@ -8,9 +9,11 @@ interface Props {
 
 export const BoardRow: React.FC<Props> = ({ row }) => {
 
+  console.log(row);
+
   return (
     <BoardRowContainer>
-      {row.map(square => (<BoardSquare square={square} />))}
+      {row.map((square, key) => (<BoardSquare square={square} key={`square${key}`} />))}
     </BoardRowContainer>
   )
 }

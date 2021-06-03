@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { square } from '../types';
-import { BoardSquareContainer } from './elements';
+import { BoardSquareContainer, SquareText } from './elements';
 
 interface Props {
   square: square;
 }
 
-export const BoardRow: React.FC<Props> = ({ square }) => {
-
+export const BoardSquare: React.FC<Props> = ({ square }) => {
+  const isFilled = !!square;
   return (
-    <BoardSquareContainer>
-      {square || ''}
+    <BoardSquareContainer isFilled={isFilled} >
+      <SquareText>
+        {square || ''}
+      </SquareText>
     </BoardSquareContainer>
   )
 }
