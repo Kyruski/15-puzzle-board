@@ -1,6 +1,15 @@
-# 15 Game
+# 15 puzzle board
 
-This is a Game board for the 15 Game.
+This is a Game board for the 15 puzzle game. Currently, it only has functionality to: 
+
+
+1. Move a single adjacent square
+2. Move a whole row/column with the use of the control arrows
+
+### IMPORTANT
+
+**_THE BOARD IS RANDOMLY GENERATED AND IS NOT NECESSARILY CODED TO ALWAYS BE SOLVABLE. THE BOARD MAY BE IMPOSSIBLE_**
+
 
 ## Built With
 
