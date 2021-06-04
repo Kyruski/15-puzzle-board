@@ -16,13 +16,13 @@ export const BoardRow: React.FC<Props> = ({ row, rowIndex, handleSquareClick, mo
   return (
     <BoardRowContainer>
       <LeftControl onClick={() => moveMultiple([rowIndex, null], 'left')}>
-        {'←'}
+        ᐊ
       </LeftControl>
       {row.map((square, index) => (
         <BoardSquare square={square} handleSquareClick={handleSquareClick} pos={[rowIndex, index]} key={`square${index}`} />
       ))}
       <RightControl onClick={() => moveMultiple([rowIndex, null], 'right')}>
-        {'→'}
+        ᐅ
       </RightControl>
     </BoardRowContainer>
   )
