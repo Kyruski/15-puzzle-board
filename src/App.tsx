@@ -16,7 +16,7 @@ function App() {
       </div>
       <div>
         <p>
-          Additionally, a whole row or column can be oved by clicking the arrow above/to the side and the cells move in that direction
+          Additionally, a whole row or column can be moved by clicking the arrow above/to the side and the cells move in that direction
         </p>
       </div>
       <Board />

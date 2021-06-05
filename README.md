@@ -8,7 +8,9 @@ This is a Game board for the 15 puzzle game. Currently, it only has functionalit
 
 ### IMPORTANT
 
-**_THE BOARD IS RANDOMLY GENERATED AND IS NOT NECESSARILY CODED TO ALWAYS BE SOLVABLE. THE BOARD MAY BE IMPOSSIBLE_**
+**_THE BOARD IS RANDOMLY GENERATED AND IS NOT NECESSARILY CODED TO ALWAYS BE SOLVABLE_**
+
+**_THE BOARD MAY BE IMPOSSIBLE_**
 
 
 ## Built With
@@ -46,7 +48,6 @@ below.
   1.22.10
 ```
 
-Additionally, Make sure you have an accessible MongoDB. Add the DB location to your `.env` file as `DATABASE_URL=[your url]` without the brackets.
 
 ### Installing
 

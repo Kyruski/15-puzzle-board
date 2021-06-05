@@ -44,10 +44,6 @@ export const TopBottomControl = styled(GenericControl)`
   text-align: center;
 `;
 
-export const TopBottomContainer = styled.div`
-  position: relative;
-`;
-
 export const TopControl = styled(TopBottomControl)`
   top: -68px;
 `;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { square } from '../types';
 import { BoardRow } from './BoardRow';
 import { ControlRow } from './ControlRow';
-import { BoardContainer, GameContainer, TopBottomContainer, BottomControl, TopControl } from './elements';
+import { BoardContainer, GameContainer, BottomControl, TopControl, BoardRowContainer } from './elements';
 
 const initialBoard = (): [square[][], number[]] => {
   const nums = Array(16).fill(null); //create empty array with 'null'
@@ -84,17 +84,17 @@ export const Board = () => {
   return (
     <GameContainer>
       <BoardContainer>
-        <TopBottomContainer>
+        <BoardRowContainer>
           <TopControl>
             <ControlRow row={controllRow} moveMultiple={moveMultiple} arrow={'top'} />
           </TopControl>
-        </TopBottomContainer>
+        </BoardRowContainer>
         {board.map((row, index) => (<BoardRow row={row} handleSquareClick={handleSquareClick} moveMultiple={moveMultiple} rowIndex={index} key={`row${index}`} />))}
-        <TopBottomContainer>
+        <BoardRowContainer>
           <BottomControl>
             <ControlRow row={controllRow} moveMultiple={moveMultiple} arrow={'bottom'} />
           </BottomControl>
-        </TopBottomContainer>
+        </BoardRowContainer>
       </BoardContainer>
     </GameContainer>
   )
