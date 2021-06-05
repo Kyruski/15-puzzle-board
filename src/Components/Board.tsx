@@ -86,13 +86,13 @@ export const Board = () => {
       <BoardContainer>
         <TopBottomContainer>
           <TopControl>
-            <ControlRow row={controllRow} moveMultiple={moveMultiple} arrowClick={'top'} arrow={'ᐃ'} />
+            <ControlRow row={controllRow} moveMultiple={moveMultiple} arrow={'top'} />
           </TopControl>
         </TopBottomContainer>
         {board.map((row, index) => (<BoardRow row={row} handleSquareClick={handleSquareClick} moveMultiple={moveMultiple} rowIndex={index} key={`row${index}`} />))}
         <TopBottomContainer>
           <BottomControl>
-            <ControlRow row={controllRow} moveMultiple={moveMultiple} arrowClick={'bottom'} arrow={'ᐁ'} />
+            <ControlRow row={controllRow} moveMultiple={moveMultiple} arrow={'bottom'} />
           </BottomControl>
         </TopBottomContainer>
       </BoardContainer>

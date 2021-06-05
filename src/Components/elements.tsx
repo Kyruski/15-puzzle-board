@@ -16,29 +16,31 @@ export const BoardRowContainer = styled.div`
 `
 
 export const BoardSquareContainer = styled.div`
-display: inline-block;
-`;
-
-export const ControlRowContainer = styled.div`
-
+  display: inline-block;
 `;
 
 export const ControlSquareContainer = styled.div`
-display: inline-block;
-  width: 82px;
+  display: inline-block;
+  width: 82px; 
 `;
 
-export const LeftRightControl = styled(BoardSquareContainer)`
+export const ControlArrowContainer = styled.p`
+  cursor: pointer;
+`;
+
+
+export const GenericControl = styled(BoardSquareContainer)`
+  font-size: 30px;
+  position: absolute;
+`;
+
+export const LeftRightControl = styled(GenericControl)`
   width: 30px;
-  font-size: 30px;
-  position: absolute;
-  top: 20px;
+  top: -7px;
 `;
 
-export const TopBottomControl = styled(BoardSquareContainer)`
+export const TopBottomControl = styled(GenericControl)`
   height: 30px;
-  font-size: 30px;
-  position: absolute;
   text-align: center;
 `;
 
@@ -47,24 +49,24 @@ export const TopBottomContainer = styled.div`
 `;
 
 export const TopControl = styled(TopBottomControl)`
-  top: -37px;
+  top: -68px;
 `;
 
 export const BottomControl = styled(TopBottomControl)`
-  bottom: -25px;
+  bottom: -1px;
 `;
 
 export const LeftControl = styled(LeftRightControl)`
-  left: -25px;
+  left: -35px;
 `;
 
 export const RightControl = styled(LeftRightControl)`
-  right: -32px;
+  right: -35px;
 `;
 
 export const BoardSquareItem = styled.div<{ isFilled: boolean }>`
   background-color: ${({ isFilled }) => isFilled ? '#2d5178' : 'white'};
-    
+
   display: flex;
   justify-content: center;
   align-items: center;

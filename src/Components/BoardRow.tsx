@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { square } from '../types';
-import { BoardRowContainer, LeftControl, RightControl } from './elements';
+import { BoardRowContainer, ControlArrowContainer, LeftControl, RightControl } from './elements';
 import { BoardSquare } from './BoardSquare'
 
 interface Props {
@@ -16,13 +16,17 @@ export const BoardRow: React.FC<Props> = ({ row, rowIndex, handleSquareClick, mo
   return (
     <BoardRowContainer>
       <LeftControl onClick={() => moveMultiple([rowIndex, null], 'left')}>
-        ᐊ
+        <ControlArrowContainer>
+          ◀️
+      </ControlArrowContainer>
       </LeftControl>
       {row.map((square, index) => (
         <BoardSquare square={square} handleSquareClick={handleSquareClick} pos={[rowIndex, index]} key={`square${index}`} />
       ))}
       <RightControl onClick={() => moveMultiple([rowIndex, null], 'right')}>
-        ᐅ
+        <ControlArrowContainer>
+          ▶️
+        </ControlArrowContainer>
       </RightControl>
     </BoardRowContainer>
   )
