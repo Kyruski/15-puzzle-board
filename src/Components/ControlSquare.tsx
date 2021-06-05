@@ -1,11 +1,11 @@
 import React from 'react';
-import { ControlArrowContainer, ControlSquareContainer, TopControl } from './elements';
-import { square } from '../types';
+import { ControlArrowContainer, ControlSquareContainer } from './elements';
+import { MoveMultipleFnType, NulledPositionType } from '../types';
 
 interface Props {
   arrow: string;
-  pos: square[];
-  moveMultiple: Function;
+  pos: NulledPositionType;
+  moveMultiple: MoveMultipleFnType;
 }
 
 export const ControlSquare: React.FC<Props> = ({ arrow, moveMultiple, pos }) => {

@@ -1,13 +1,13 @@
 import React from 'react';
-import { square } from '../types';
+import { RowType, MoveMultipleFnType, HandleSquareClickFnType } from '../types';
 import { BoardRowContainer, ControlArrowContainer, LeftControl, RightControl } from './elements';
 import { BoardSquare } from './BoardSquare'
 
 interface Props {
-  row: square[];
+  row: RowType;
   rowIndex: number;
-  handleSquareClick: Function;
-  moveMultiple: Function;
+  handleSquareClick: HandleSquareClickFnType;
+  moveMultiple: MoveMultipleFnType;
 }
 
 export const BoardRow: React.FC<Props> = ({ row, rowIndex, handleSquareClick, moveMultiple }) => {

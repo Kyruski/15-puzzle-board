@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { square } from '../types';
+import { BoardType, NulledPositionType, PositionType } from '../types';
 import { BoardRow } from './BoardRow';
 import { ControlRow } from './ControlRow';
 import { BoardContainer, GameContainer, BottomControl, TopControl, BoardRowContainer } from './elements';
 
-const initialBoard = (): [square[][], number[]] => {
+const initialBoard = (): [BoardType, PositionType] => {
   const nums = Array(16).fill(null); //create empty array with 'null'
   for (let i = 1; i <= 15; i++) { //populate the array with numbers 1-15 in random indexs
     if (!nums.includes(i)) {
@@ -15,14 +15,16 @@ const initialBoard = (): [square[][], number[]] => {
       nums[randIndex] = i;
     }
   }
-  let open = [0, 0];
+  const open: PositionType = [0, 0];
   const board = []
   for (let i = 0; i < 4; i++) { //run through the array turning into 2d matrix for board
     const row = [];
     for (let j = 0; j < 4; j++) {
       let num = nums.pop()
       row.push(num);
-      if (num === null) open = [i, j]; //if the value null, we have our open space
+      if (num === null) {
+        [open[0], open[1]] = [i, j]; //if the value null, we have our open space
+      }
     }
     board.push(row);
   }
@@ -37,7 +39,7 @@ export const Board = () => {
 
   const controllRow = [true, true, true, true];
 
-  const handleSquareClick = (pos: number[]): void => {
+  const handleSquareClick = (pos: PositionType): void => {
     const newMatrix = [...board]; //working matrix since board is immutable
     if ( //check if valid move
       (Math.abs(pos[0] - openSpace[0]) === 1 && pos[1] === openSpace[1]) || //if in same column and adjacent
@@ -49,11 +51,11 @@ export const Board = () => {
     }
   }
 
-  const moveMultiple = (pos: square[], arrowClick: string): void => {
+  const moveMultiple = (pos: NulledPositionType, arrow: string): void => {
     const newMatrix = [...board]; //working matrix since board is immutable
-    let newPos = [...openSpace];
+    let newPos: PositionType = [...openSpace];
     if (pos[0] === null && pos[1] === openSpace[1]) { //checking if it's a column (if pos[0] is null) and if it's the correct column
-      if (arrowClick === 'bottom' || arrowClick === 'right') {
+      if (arrow === 'bottom' || arrow === 'right') {
         for (let i = openSpace[0]; i > 0; i--) { //work from open space to start, excluding 0th index since it switches
           [newMatrix[i][pos[1]], newMatrix[i - 1][pos[1]]] = [newMatrix[i - 1][pos[1]], newMatrix[i][pos[1]]] //swap spots
         }
@@ -65,7 +67,7 @@ export const Board = () => {
         newPos = [3, pos[1]];
       }
     } else if (pos[1] === null && pos[0] === openSpace[0]) { //checking if it's a row (if pos[1] is null) and if it's the correct row
-      if (arrowClick === 'bottom' || arrowClick === 'right') {
+      if (arrow === 'bottom' || arrow === 'right') {
         for (let i = openSpace[1]; i > 0; i--) { //work from open space to start, excluding 0th index since it switches
           [newMatrix[pos[0]][i], newMatrix[pos[0]][i - 1]] = [newMatrix[pos[0]][i - 1], newMatrix[pos[0]][i]] //swap spots
         }
