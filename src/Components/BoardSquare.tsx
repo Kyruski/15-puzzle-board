@@ -9,7 +9,6 @@ interface Props {
 }
 
 export const BoardSquare: React.FC<Props> = ({ square, pos, handleSquareClick }) => {
-
   const isFilled = !!square;
 
   return (

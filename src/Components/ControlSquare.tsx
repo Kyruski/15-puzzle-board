@@ -16,6 +16,5 @@ export const ControlSquare: React.FC<Props> = ({ arrow, moveMultiple, pos }) => 
         {arrow === 'top' ? `🔼` : `🔽`}
       </ControlArrowContainer>
     </ControlSquareContainer>
-
   )
 }

@@ -12,7 +12,6 @@ interface Props {
 
 export const BoardRow: React.FC<Props> = ({ row, rowIndex, handleSquareClick, moveMultiple }) => {
 
-
   return (
     <BoardRowContainer>
       <LeftControl onClick={() => moveMultiple([rowIndex, null], 'left')}>
@@ -21,7 +20,7 @@ export const BoardRow: React.FC<Props> = ({ row, rowIndex, handleSquareClick, mo
       </ControlArrowContainer>
       </LeftControl>
       {row.map((square, index) => (
-        <BoardSquare square={square} handleSquareClick={handleSquareClick} pos={[rowIndex, index]} key={`square${index}`} />
+        <BoardSquare square={square} handleSquareClick={handleSquareClick} pos={[rowIndex, index]} key={`square${rowIndex}-${index}`} />
       ))}
       <RightControl onClick={() => moveMultiple([rowIndex, null], 'right')}>
         <ControlArrowContainer>
